@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelvin Kafumu — AI Trainer & Copywriter</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0d0b;
+    --paper: #f5f2ec;
+    --accent: #c8440a;
+    --muted: #635e56;
+    --rule: #d8d3ca;
+    --card-bg: #eeebe3;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245,242,236,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; letter-spacing: 0.03em; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-left { position: relative; }
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 1.2rem;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+  .hero-name em { font-style: italic; color: var(--accent); display: block; }
+  .hero-tagline {
+    font-size: 1.05rem; color: var(--muted); margin: 1.5rem 0 2.5rem;
+    max-width: 38ch; line-height: 1.8;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--ink); color: var(--paper);
+    text-decoration: none; padding: 0.85rem 2rem;
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 500; transition: background 0.2s;
+  }
+  .hero-cta:hover { background: var(--accent); }
+  .hero-cta-ghost {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    border: 1px solid var(--ink); color: var(--ink);
+    text-decoration: none; padding: 0.85rem 2rem;
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 500; margin-left: 1rem; transition: all 0.2s;
+  }
+  .hero-cta-ghost:hover { background: var(--ink); color: var(--paper); }
+
+  .hero-right {
+    display: flex; flex-direction: column; gap: 1rem;
+    border-left: 1px solid var(--rule); padding-left: 4rem;
+  }
+  .stat-card {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif; font-size: 2.8rem;
+    color: var(--accent); line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-top: 0.3rem; }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1; margin-bottom: 3rem;
+  }
+  hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 0 3rem; }
+
+  /* ── ABOUT ── */
+  .about { background: var(--card-bg); }
+  .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 5rem; align-items: start; }
+  .about-body p { font-size: 1.05rem; line-height: 1.85; color: var(--ink); margin-bottom: 1.2rem; }
+  .about-body p strong { font-weight: 500; color: var(--accent); }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .tag {
+    padding: 0.3rem 0.85rem; border: 1px solid var(--rule);
+    font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--muted); background: var(--paper);
+  }
+  .about-side { padding-top: 0.5rem; }
+  .side-item { margin-bottom: 1.8rem; padding-bottom: 1.8rem; border-bottom: 1px solid var(--rule); }
+  .side-item:last-child { border-bottom: none; }
+  .side-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 0.4rem; }
+  .side-value { font-size: 0.95rem; font-weight: 400; }
+
+  /* ── EXPERIENCE ── */
+  .experience {}
+  .exp-item {
+    display: grid; grid-template-columns: 180px 1fr;
+    gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .exp-item:first-of-type { border-top: 1px solid var(--rule); }
+  .exp-date { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.04em; padding-top: 0.2rem; }
+  .exp-role { font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin-bottom: 0.2rem; }
+  .exp-org { font-size: 0.85rem; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; font-weight: 500; }
+  .exp-bullets { padding-left: 1.1rem; }
+  .exp-bullets li { font-size: 0.93rem; color: var(--muted); margin-bottom: 0.4rem; line-height: 1.65; }
+
+  /* ── SKILLS ── */
+  .skills { background: var(--card-bg); }
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .skill-block { padding: 2rem; background: var(--paper); border: 1px solid var(--rule); }
+  .skill-block-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
+  .skill-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--rule); font-size: 0.88rem;
+  }
+  .skill-item:last-child { border-bottom: none; }
+  .skill-dots { display: flex; gap: 4px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rule); }
+  .dot.filled { background: var(--accent); }
+
+  /* ── WRITING / MEDIUM ── */
+  .writing {}
+  .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .article-card {
+    padding: 2rem; background: var(--card-bg); border: 1px solid var(--rule);
+    text-decoration: none; color: inherit; display: block;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+  .article-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .article-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 500; margin-bottom: 0.8rem; }
+  .article-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; line-height: 1.3; margin-bottom: 0.8rem; }
+  .article-preview { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+  .article-footer { margin-top: 1.5rem; font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+  .article-arrow { margin-left: auto; font-size: 0.9rem; color: var(--accent); }
+  .placeholder-note {
+    text-align: center; padding: 3rem; border: 2px dashed var(--rule); color: var(--muted);
+    font-size: 0.9rem; font-style: italic; margin-top: 1.5rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--ink); color: var(--paper); }
+  .contact .section-label { color: var(--accent); }
+  .contact .section-title { color: var(--paper); }
+  .contact hr.rule { border-top-color: rgba(255,255,255,0.12); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contact-info p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 2rem; }
+  .contact-item { display: flex; flex-direction: column; margin-bottom: 1.2rem; }
+  .contact-item-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-bottom: 0.2rem; }
+  .contact-item-value a { color: var(--paper); text-decoration: none; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.1rem; transition: border-color 0.2s; }
+  .contact-item-value a:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-item-value span { color: var(--paper); font-size: 0.95rem; }
+  .hire-box { padding: 2.5rem; border: 1px solid rgba(255,255,255,0.15); }
+  .hire-box p { color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 2rem; }
+  .hire-btn {
+    display: inline-block; padding: 0.85rem 2rem;
+    background: var(--accent); color: white;
+    text-decoration: none; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .hire-btn:hover { opacity: 0.85; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem; background: var(--ink); color: rgba(255,255,255,0.3);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.75rem; letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeUp 0.7s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.25s; }
+  .fade-in:nth-child(3) { animation-delay: 0.4s; }
+  .fade-in:nth-child(4) { animation-delay: 0.55s; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+    .hero-right { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 2rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .skills-grid, .articles-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Kelvin Kafumu</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#writing">Writing</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-in">AI Trainer · Copywriter · Swahili Specialist</div>
+    <h1 class="hero-name fade-in">
+      I write.
+      <em>I train AI</em>
+      to write.
+    </h1>
+    <p class="hero-tagline fade-in">
+      Bridging language, culture, and machine intelligence — from Dar es Salaam to the world's largest AI labs.
+    </p>
+    <div class="fade-in">
+      <a href="#contact" class="hero-cta">Work with me →</a>
+      <a href="https://www.linkedin.com/in/kelvin-kafumu" target="_blank" class="hero-cta-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="hero-right fade-in">
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years of experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">90%</div>
+        <div class="stat-label">LLM accuracy improvement</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num">15K</div>
+        <div class="stat-label">Words translated/day</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Languages spoken</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">Swahili</div>
+      <div class="stat-label">Native · Rare in AI — bridging East Africa & global tech</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About</div>
+  <div class="section-title">Language expert.<br>AI insider.</div>
+  <hr class="rule">
+  <div class="about-grid">
+    <div class="about-body">
+      <p>I'm Kelvin Kafumu — a copywriter, AI content trainer, and Swahili language specialist based in <strong>Dar es Salaam, Tanzania</strong>.</p>
+      <p>My work sits at a rare intersection: <strong>native Swahili fluency + deep NLP expertise</strong>. While most AI systems were trained on Western languages, I've spent the last two years actively fixing that — engineering prompts, building evaluation sets, and teaching large language models how Swahili actually works: its noun classes, morphology, dialectal variation, and cultural nuance.</p>
+      <p>Before AI, I spent years as a professional translator and content writer — handling legal documents, marketing copy, and technical manuals. That foundation in precision and clarity is what makes my AI training work actually effective.</p>
+      <p>My positioning is simple: <strong>"I write. I train AI to write."</strong> Both halves matter.</p>
+      <div class="tag-list">
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">LLM Evaluation</span>
+        <span class="tag">Swahili NLP</span>
+        <span class="tag">Copywriting</span>
+        <span class="tag">AI Literacy</span>
+        <span class="tag">Translation</span>
+        <span class="tag">Data Annotation</span>
+        <span class="tag">African Markets</span>
+      </div>
+    </div>
+    <div class="about-side">
+      <div class="side-item">
+        <div class="side-label">Location</div>
+        <div class="side-value">Dar es Salaam, Tanzania</div>
+      </div>
+      <div class="side-item">
+        <div class="side-label">Email</div>
+        <div class="side-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d565c5b4850485658514b54537d5a505c5451135e5250">[email&#160;protected]</a></div>
+      </div>
+      <div class="side-item">
+        <div class="side-label">LinkedIn</div>
+        <div class="side-value"><a href="https://www.linkedin.com/in/kelvin-kafumu" target="_blank" style="color:var(--accent);text-decoration:none;">kelvin-kafumu ↗</a></div>
+      </div>
+      <div class="side-item">
+        <div class="side-label">Languages</div>
+        <div class="side-value">Swahili (Native) · English (Professional) · German (Basic)</div>
+      </div>
+      <div class="side-item">
+        <div class="side-label">Available for</div>
+        <div class="side-value">AI Training, Copywriting, Swahili NLP, Localization</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-label">Experience</div>
+  <div class="section-title">Where I've done<br>the work.</div>
+  <hr class="rule">
+
+  <div class="exp-item">
+    <div class="exp-date">2024 – 2025</div>
+    <div>
+      <div class="exp-role">AI Trainer</div>
+      <div class="exp-org">Alignerr</div>
+      <ul class="exp-bullets">
+        <li>Developed Swahili localization style guides and terminology resources, reducing reviewer edits by 90% across 5,000+ words/month.</li>
+        <li>Delivered workshops on Swahili noun class systems and derivational morphology for NLP practitioners.</li>
+        <li>Documented failure patterns and proposed rubric + few-shot exemplars, improving exact-match scores on held-out evaluation sets by 90%.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-date">2023 – 2024</div>
+    <div>
+      <div class="exp-role">Swahili AI Trainer & Evaluator</div>
+      <div class="exp-org">Outlier</div>
+      <ul class="exp-bullets">
+        <li>Engineered zero-shot, few-shot, role, self-critique, and chain-of-thought prompts — raised Swahili morphological accuracy from 20% to 90%.</li>
+        <li>Reduced hallucinated etymologies by 90% through targeted prompt design and systematic error analysis.</li>
+        <li>Built a balanced Swahili test set covering dialectal variation and morphological edge cases.</li>
+        <li>Contributed to an AI-driven skills assessment tool, improving matching precision by 25%.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-date">2019 – 2020</div>
+    <div>
+      <div class="exp-role">Swahili Junior Translator</div>
+      <div class="exp-org">Freelance</div>
+      <ul class="exp-bullets">
+        <li>15,000 words/day translated with 98% accuracy across legal, technical, and marketing content.</li>
+        <li>Handled 20+ projects monthly; translated 200+ legal documents annually.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-date">2016 – 2019</div>
+    <div>
+      <div class="exp-role">Content Writer & Freelance Translator</div>
+      <div class="exp-org">Self-Employed</div>
+      <ul class="exp-bullets">
+        <li>Wrote and edited content for diverse audiences; utilized CAT Tools and translation memory software.</li>
+        <li>Translated marketing materials and technical manuals, maintaining cross-project consistency.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-label">Capabilities</div>
+  <div class="section-title">What I bring<br>to your project.</div>
+  <hr class="rule">
+  <div class="skills-grid">
+    <div class="skill-block">
+      <div class="skill-block-title">AI & Machine Learning</div>
+      <div class="skill-item"><span>Prompt Engineering</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+      <div class="skill-item"><span>LLM Evaluation</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+      <div class="skill-item"><span>AI Model Training</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="skill-item"><span>Data Annotation</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Language & Writing</div>
+      <div class="skill-item"><span>Swahili (Native)</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+      <div class="skill-item"><span>Copywriting</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+      <div class="skill-item"><span>Translation & Localization</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="skill-item"><span>Audio Transcription</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Linguistics</div>
+      <div class="skill-item"><span>Morphology & Syntax</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+      <div class="skill-item"><span>Phonology & Phonetics</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="skill-item"><span>Swahili Cultural Expertise</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+      <div class="skill-item"><span>Error Analysis & Rubrics</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Tools & Tech</div>
+      <div class="skill-item"><span>CAT Tools & TM Software</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="skill-item"><span>HTML & CSS</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="skill-item"><span>Microsoft Office Suite</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="skill-item"><span>AI Literacy & Training</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING / MEDIUM -->
+<section class="writing" id="writing">
+  <div class="section-label">Writing</div>
+  <div class="section-title">Thinking in public<br>on Medium.</div>
+  <hr class="rule">
+  <div class="articles-grid">
+    <a href="https://medium.com/@mdKevoo4/i-spent-3-months-training-ai-to-write-better-here-is-what-it-taught-me-about-human-communication-bdc0adeb59b7" target="_blank" class="article-card">
+      <div class="article-tag">AI Training · Human Communication</div>
+      <div class="article-title">I Spent 3 Months Training AI to Write Better. Here Is What It Taught Me About Human Communication.</div>
+      <div class="article-preview">There is a moment that happens every time I sit down to evaluate an AI-generated response. An insider's look at what teaching machines to write reveals about how we communicate.</div>
+      <div class="article-footer">
+        <span>Medium · 2025</span>
+        <span class="article-arrow">→</span>
+      </div>
+    </a>
+    <a href="https://medium.com/p/f01bad18e9d4" target="_blank" class="article-card">
+      <div class="article-tag">Copywriting · AI</div>
+      <div class="article-title">The 7 Copy Secrets AI Will Never Figure Out</div>
+      <div class="article-preview">AI can generate 10,000 words while you brew your morning coffee. But the copy that actually converts is still written by humans who understand what AI fundamentally cannot.</div>
+      <div class="article-footer">
+        <span>Medium · 2026</span>
+        <span class="article-arrow">→</span>
+      </div>
+    </a>
+    <a href="https://medium.com/p/dcb9e5abb4b5" target="_blank" class="article-card">
+      <div class="article-tag">Africa · AI · Language</div>
+      <div class="article-title">Africa Is Not Ready for AI. AI Is Not Ready for Africa.</div>
+      <div class="article-preview">The gap isn't infrastructure. It isn't access. It's language — and the companies that close it first will own the African tech market for the next generation.</div>
+      <div class="article-footer">
+        <span>Medium · 2026</span>
+        <span class="article-arrow">→</span>
+      </div>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:2rem;">
+    <a href="https://medium.com/@mdKevoo4" target="_blank" style="display:inline-block;border:1px solid var(--rule);padding:0.7rem 1.8rem;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:all 0.2s;">Read all articles on Medium →</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Contact</div>
+  <div class="section-title">Let's build<br>something.</div>
+  <hr class="rule">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>Whether you need a Swahili AI trainer, a copywriter who understands African markets, or someone who can make your LLM actually speak the language — I'm available.</p>
+      <div class="contact-item">
+        <div class="contact-item-label">Email</div>
+        <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#f59e94938098809e9099839c9bb59298949c99db969a98"><span class="__cf_email__" data-cfemail="7d161c1b0810081618110b14133d1a101c1411531e1210">[email&#160;protected]</span></a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Phone</div>
+        <div class="contact-item-value"><span>+255 625 939 268</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">LinkedIn</div>
+        <div class="contact-item-value"><a href="https://www.linkedin.com/in/kelvin-kafumu" target="_blank">linkedin.com/in/kelvin-kafumu ↗</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Location</div>
+        <div class="contact-item-value"><span>Dar es Salaam, Tanzania</span></div>
+      </div>
+    </div>
+    <div class="hire-box">
+      <h3 style="font-family:'DM Serif Display',serif;font-size:1.4rem;color:white;margin-bottom:1rem;">Open for opportunities</h3>
+      <p>AI model training contracts, Swahili NLP consulting, copywriting projects, and content strategy for African and emerging markets.</p>
