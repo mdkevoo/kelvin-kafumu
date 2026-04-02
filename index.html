@@ -98,11 +98,19 @@
 <style>
   :root {
     --ink: #0e0d0b;
-    --paper: #f7f4ef;
+    --paper: #f9f6f1;
     --accent: #b5370a;
+    --accent2: #c94d1f;
     --muted: #5a5550;
     --rule: #ddd9d2;
     --card-bg: #edeae3;
+    --gold: #c8950a;
+    --green: #14a37f;
+    /* Section palette — warm neutrals only, same temperature family */
+    --sand:      #f0ece3;   /* education — warm sand, slightly deeper than paper */
+    --parchment: #f4f0e6;   /* samples   — warm parchment, like a printed document */
+    --linen:     #e8e4dc;   /* skills    — slightly deeper linen, grounded */
+    --fog:       #f6f3ee;   /* writing   — lightest warm grey, airy */
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { font-size: 16px; scroll-behavior: smooth; }
@@ -237,9 +245,9 @@
   .side-value { font-size: 0.95rem; font-weight: 400; }
 
   /* ── EXPERIENCE ── */
-  .experience {}
+  .experience { background: var(--paper); }
   /* ── EDUCATION ── */
-  .education { background: var(--card-bg); }
+  .education { background: var(--sand); }
   .exp-item {
     display: grid; grid-template-columns: 180px 1fr;
     gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--rule);
@@ -252,7 +260,7 @@
   .exp-bullets li { font-size: 0.93rem; color: var(--muted); margin-bottom: 0.4rem; line-height: 1.65; }
 
   /* ── SKILLS ── */
-  .skills { background: var(--card-bg); }
+  .skills { background: var(--linen); }
   .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
   .skill-block { padding: 2rem; background: var(--paper); border: 1px solid var(--rule); }
   .skill-block-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
@@ -266,7 +274,7 @@
   .dot.filled { background: var(--accent); }
 
   /* ── WRITING / MEDIUM ── */
-  .writing {}
+  .writing { background: var(--fog); }
   .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .article-card {
     padding: 2rem; background: var(--card-bg); border: 1px solid var(--rule);
@@ -335,6 +343,145 @@
     .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .skills-grid, .articles-grid { grid-template-columns: 1fr; }
   }
+  /* ── SERVICES ── */
+  .services { background: var(--ink); color: var(--paper); }
+  .services .section-label { color: var(--accent); }
+  .services .section-title { color: var(--paper); }
+  .services hr.rule { border-top-color: rgba(255,255,255,0.1); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .service-card {
+    padding: 2rem 1.8rem; border: 1px solid rgba(255,255,255,0.12);
+    transition: border-color 0.2s;
+  }
+  .service-card:hover { border-color: var(--accent); }
+  .service-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+  .service-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--paper); margin-bottom: 0.6rem; line-height: 1.3; }
+  .service-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 1.2rem; }
+  .service-list { list-style: none; padding: 0; }
+  .service-list li { font-size: 0.8rem; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .service-list li:last-child { border-bottom: none; }
+  @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
+
+  /* ── COPY SAMPLES ── */
+  .samples { background: var(--parchment); }
+  .samples-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+  .sample-card { background: var(--paper); border: 1px solid var(--rule); padding: 0; overflow: hidden; }
+  .sample-header { padding: 1.4rem 1.8rem 1rem; border-bottom: 1px solid var(--rule); }
+  .sample-type { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); font-weight: 500; margin-bottom: 0.5rem; }
+  .sample-client { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .sample-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--ink); margin: 0.4rem 0 0.6rem; line-height: 1.3; }
+  .sample-body { padding: 1.4rem 1.8rem; font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+  .sample-body p { margin-bottom: 0.9rem; }
+  .sample-body p:last-child { margin-bottom: 0; }
+  .sample-body strong { color: var(--ink); font-weight: 500; }
+  .sample-cta { display: inline-block; margin-top: 1rem; padding: 0.6rem 1.4rem; background: var(--ink); color: var(--paper); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+  .sample-footer { padding: 1rem 1.8rem; background: var(--card-bg); border-top: 1px solid var(--rule); display: flex; gap: 1rem; flex-wrap: wrap; }
+  .sample-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 0.25rem 0.7rem; border: 1px solid var(--rule); }
+  @media (max-width: 768px) { .samples-grid { grid-template-columns: 1fr; } }
+  /* ── 2026 DESIGN UPGRADES ── */
+
+  /* Gradient hero name */
+  .hero-name em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 60%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+
+  /* Accent underline on section labels */
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 2px;
+    background: var(--accent);
+    margin-top: 6px;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Sample card — richer hover */
+  .sample-card {
+    transition: transform 0.25s cubic-bezier(0.22,1,0.36,1),
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+  }
+  .sample-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(181,55,10,0.10);
+  }
+
+  /* Stat card hover glow */
+  .stat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(181,55,10,0.12);
+  }
+
+  /* Nav link active underline */
+  .nav-links a {
+    position: relative;
+    padding-bottom: 2px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.2s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* Service card border-left accent on hover */
+  .service-card {
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .service-card:hover {
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* Article card improved hover */
+  .article-card {
+    transition: border-color 0.2s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
+  }
+  .article-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.08);
+  }
+
+  /* Hire button shine effect */
+  .hire-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .hire-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease;
+  }
+  .hire-btn:hover::after { left: 150%; }
+
 </style>
 </head>
 <body>
@@ -345,8 +492,8 @@
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#experience">Work</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
+    <a href="#services">Services</a>
+    <a href="#samples">Samples</a>
     <a href="#writing">Writing</a>
     <a href="#contact">Contact</a>
   </div>
@@ -378,8 +525,8 @@
       <div class="stat-label">Years of experience</div>
     </div>
     <div class="stat-card" style="min-width:160px;">
-      <div class="stat-num">90%</div>
-      <div class="stat-label">LLM accuracy improvement</div>
+      <div class="stat-num">500+</div>
+      <div class="stat-label">AI responses evaluated</div>
     </div>
     <div class="stat-card" style="min-width:160px;">
       <div class="stat-num">15K</div>
@@ -471,46 +618,12 @@
     </div>
   </div>
 
-  <div class="exp-item">
-    <div class="exp-date">2024 — 2025</div>
-    <div>
-      <div class="exp-role">AI Language Instructor</div>
-      <div class="exp-org">Alignerr</div>
-      <ul class="exp-bullets">
-        <li>Delivered training on Swahili noun class systems and derivational morphology for NLP practitioners by designing structured workshop content that translated complex linguistic theory into actionable evaluation criteria, equipping technical teams with frameworks they could not source from existing documentation.</li>
-        <li>Developed style guides and Swahili localization terminology for AI training workflows by standardizing reviewer judgment across a sustained output of 5,000+ words per month, reducing inconsistency and edit cycles at scale.</li>
-        <li>Documented AI output failure patterns and proposed rubric improvements with few-shot exemplars by cataloguing recurring error types across thousands of evaluated responses, directly improving evaluation consistency and exact-match scores across the team.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-date">2019 — 2020</div>
-    <div>
-      <div class="exp-role">Swahili Translator</div>
-      <div class="exp-org">Freelance</div>
-      <ul class="exp-bullets">
-        <li>Translated an average of 15,000 words per day with 98% accuracy across legal, technical, and marketing content by applying CAT Tools and translation memory software, managing 20+ concurrent projects monthly and delivering 200+ legal documents annually without a single client complaint on accuracy.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-date">2016 — 2019</div>
-    <div>
-      <div class="exp-role">Content Writer &amp; Translator</div>
-      <div class="exp-org">Self-Employed</div>
-      <ul class="exp-bullets">
-        <li>Wrote and edited English content for diverse audiences across marketing, technical, and creative verticals by combining CAT Tools with translation memory software to maintain cross-project consistency, building the precision and clarity foundation that later became central to AI training evaluation work.</li>
-      </ul>
-    </div>
-  </div>
 </section>
 
-<!-- EDUCATION & CERTIFICATIONS -->
+<!-- EDUCATION -->
 <section class="education" id="education">
-  <div class="section-label">Education &amp; Certifications</div>
-  <div class="section-title">Academic foundation.<br>Applied credentials.</div>
+  <div class="section-label">Education</div>
+  <div class="section-title">Where the thinking<br>was shaped.</div>
   <hr class="rule">
 
   <div class="exp-item">
@@ -520,62 +633,6 @@
       <div class="exp-org">&nbsp;</div>
       <ul class="exp-bullets">
         <li>Language has always been the lens through which I understand everything else. Studying how human communication is structured, how meaning is built across different linguistic systems, and how context shapes the way people interpret words gave me a framework that proves useful every single day, whether I am evaluating an AI response, writing copy, or teaching a machine how Swahili actually works at its roots.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-date">2024</div>
-    <div>
-      <div class="exp-role">Certificate — Data Entry &amp; Microcomputer Applications</div>
-      <div class="exp-org">Coursera</div>
-      <ul class="exp-bullets">
-        <li>Structured training in data management, spreadsheet systems, and digital workflow tools directly applicable to AI data annotation pipelines and multi-platform remote work environments.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-date">2024</div>
-    <div>
-      <div class="exp-role">Certificate — Introduction to Cybersecurity</div>
-      <div class="exp-org">Cisco Networking Academy</div>
-      <ul class="exp-bullets">
-        <li>Foundational certification in cybersecurity principles covering secure data handling, threat awareness, and digital safety practices relevant to working with sensitive AI training data and client information across distributed platforms.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-date">2024</div>
-    <div>
-      <div class="exp-role">Certificate — Infection Prevention and Control in Maternal and Neonatal Care</div>
-      <div class="exp-org">World Health Organization (WHO)</div>
-      <ul class="exp-bullets">
-        <li>Professional development in clinical infection control and health communication standards, directly informing accurate Swahili medical translation and AI output evaluation in healthcare and public health contexts.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-date">2024</div>
-    <div>
-      <div class="exp-role">Certificate — Inequality Monitoring in Immunization</div>
-      <div class="exp-org">World Health Organization (WHO)</div>
-      <ul class="exp-bullets">
-        <li>Training in health equity data analysis and monitoring methodology supporting accurate evaluation of AI outputs in public health, humanitarian, and international development contexts.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-date">2023 — 2025</div>
-    <div>
-      <div class="exp-role">Applied AI Training &amp; NLP Professional Development</div>
-      <div class="exp-org">Outlier · Alignerr · Invisible Technologies</div>
-      <ul class="exp-bullets">
-        <li>Accumulated over two years of hands-on professional training in large language model evaluation, Swahili NLP methodology, prompt engineering, and rubric development through direct platform work under structured evaluation frameworks designed by AI research teams.</li>
-        <li>Developed expertise in RLHF (Reinforcement Learning from Human Feedback), data annotation best practices, and LLM quality assessment in a domain where formal academic programs do not yet exist.</li>
       </ul>
     </div>
   </div>
@@ -616,6 +673,113 @@
       <div class="skill-item"><span>Microsoft Office Suite</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
       <div class="skill-item"><span>AI Literacy & Training</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
     </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Services</div>
+  <div class="section-title">What I write.<br>What I fix.</div>
+  <hr class="rule">
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">✍️</div>
+      <div class="service-title">Conversion Copywriting</div>
+      <div class="service-desc">Copy that earns the click, the scroll, and the sale. Built on an understanding of how both human readers and AI systems process persuasion.</div>
+      <ul class="service-list">
+        <li>Landing pages</li>
+        <li>Email sequences</li>
+        <li>Product descriptions</li>
+        <li>Web copy &amp; About pages</li>
+        <li>Ad copy</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🌍</div>
+      <div class="service-title">Swahili &amp; African Market Copy</div>
+      <div class="service-desc">Copy in Swahili that reads like it was written by someone who grew up with the language. Because it was. For brands entering East African markets or building multilingual content.</div>
+      <ul class="service-list">
+        <li>Swahili brand copy</li>
+        <li>English to Swahili adaptation</li>
+        <li>East African market positioning</li>
+        <li>Bilingual content strategy</li>
+        <li>Cultural review &amp; localisation</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <div class="service-title">AI Content Training &amp; Evaluation</div>
+      <div class="service-desc">LLM evaluation, prompt engineering, and Swahili NLP data for AI training pipelines. Two years of documented work with Outlier, Alignerr, and Invisible Technologies.</div>
+      <ul class="service-list">
+        <li>Swahili LLM evaluation</li>
+        <li>Prompt-response quality rating</li>
+        <li>Rubric development</li>
+        <li>Failure pattern documentation</li>
+        <li>Swahili NLP data annotation</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- COPY SAMPLES -->
+<section class="samples" id="samples">
+  <div class="section-label">Copy Samples</div>
+  <div class="section-title">Read the work.<br>Then decide.</div>
+  <hr class="rule">
+
+  <div class="samples-grid">
+
+    <!-- SAMPLE 1: SaaS Landing Page Hero -->
+    <div class="sample-card">
+      <div class="sample-header">
+        <div class="sample-type">Landing Page — Hero Section</div>
+        <div class="sample-client">B2B SaaS · East African Analytics Platform</div>
+        <div class="sample-title">When Every Market in Africa Runs on a Different Clock, Your Data Should Know the Difference</div>
+      </div>
+      <div class="sample-body">
+        <p>Tabiri connects your business to real-time consumer behaviour data from Kenya, Tanzania, Uganda, and Rwanda. Not trends borrowed from Western markets. Not projections based on last year's guesses.</p>
+        <p><strong>Actual data. From actual people. In the markets where you are trying to grow.</strong></p>
+        <p>Most analytics platforms were built for markets where the infrastructure is predictable, the payment rails are standardised, and the consumer is assumed to behave like a Western consumer with slightly different demographics. East Africa is none of those things.</p>
+        <p>Tabiri was built here. It thinks here. It measures what actually moves money in this part of the world.</p>
+        <a class="sample-cta" href="https://www.linkedin.com/messaging/compose/?recipients=kelvin-kafumu&body=Hey%20I%20am%20interested%20lets%20talk%20a%20business" target="_blank" rel="noopener">Want copy like this for your brand? →</a>
+      </div>
+      <div class="sample-footer">
+        <span class="sample-tag">B2B SaaS</span>
+        <span class="sample-tag">East Africa</span>
+        <span class="sample-tag">Landing Page</span>
+        <span class="sample-tag">English</span>
+      </div>
+    </div>
+
+    <!-- SAMPLE 2: Swahili Ad Copy -->
+    <div class="sample-card">
+      <div class="sample-header">
+        <div class="sample-type">Ad Copy — Facebook &amp; Instagram</div>
+        <div class="sample-client">Fintech · Mobile Lending · Tanzania &amp; Kenya</div>
+        <div class="sample-title">Mkopo wa haraka bila msongo wa maswali mengi</div>
+      </div>
+      <div class="sample-body">
+        <p style="font-size:0.82rem;color:var(--muted);font-style:italic;margin-bottom:0.7rem;">Translation: A fast loan without the burden of too many questions</p>
+        <p><strong>Unahitaji pesa sasa. Sio kesho. Sio wiki ijayo.</strong></p>
+        <p style="font-size:0.82rem;color:var(--muted);font-style:italic;">You need money now. Not tomorrow. Not next week.</p>
+        <p style="margin-top:0.7rem;">Haraka inakupa mkopo ndani ya dakika 10 kwa kutumia simu yako tu. Hakuna karatasi. Hakuna foleni. Hakuna masharti magumu.</p>
+        <p style="font-size:0.82rem;color:var(--muted);font-style:italic;">Haraka gives you a loan in 10 minutes using only your phone. No paperwork. No queues. No difficult conditions.</p>
+        <p style="margin-top:0.7rem;"><strong>Anza sasa. Kwa sababu maisha hayangoji.</strong></p>
+        <p style="font-size:0.82rem;color:var(--muted);font-style:italic;">Start now. Because life does not wait.</p>
+        <a class="sample-cta" href="https://www.linkedin.com/messaging/compose/?recipients=kelvin-kafumu&body=Hey%20I%20am%20interested%20lets%20talk%20a%20business" target="_blank" rel="noopener">Need Swahili copy for your campaign? →</a>
+      </div>
+      <div class="sample-footer">
+        <span class="sample-tag">Swahili</span>
+        <span class="sample-tag">Fintech</span>
+        <span class="sample-tag">Ad Copy</span>
+        <span class="sample-tag">Bilingual</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -698,6 +862,26 @@
 
 <script>
 /* Email is available upon request via LinkedIn. No public email exposure. */
+
+/* Scroll reveal */
+(function(){
+  const els = document.querySelectorAll(
+    'section, .exp-item, .stat-card, .skill-block, .article-card, .sample-card, .service-card'
+  );
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  els.forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 4) * 0.07 + 's';
+    io.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
