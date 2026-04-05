@@ -49,11 +49,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,240,232,
 .proof-number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--accent);line-height:1;}
 .proof-text{font-size:0.8rem;color:var(--muted);line-height:1.3;}
 .proof-text strong{color:var(--ink);display:block;font-size:0.85rem;}
-.hero-image-col{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.hero-image-col{position:relative;overflow:visible;display:flex;align-items:center;justify-content:center;}
 .hero-image-col::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent) 0%,#8b3210 100%);clip-path:polygon(8% 0%,100% 0%,100% 100%,0% 100%);}
 .hero-img-wrap{position:relative;z-index:1;width:72%;max-width:360px;aspect-ratio:3/4;border-radius:4px;overflow:hidden;box-shadow:-16px 16px 48px rgba(0,0,0,0.3);margin-left:2.5rem;}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;}
-.hero-img-badge{position:absolute;bottom:-0.5rem;left:-1.5rem;background:var(--paper);border:1px solid var(--border);padding:1rem 1.2rem;border-radius:4px;box-shadow:0 8px 32px rgba(0,0,0,0.12);z-index:2;}
+.hero-img-badge{position:absolute;bottom:-0.5rem;left:-1.5rem;background:var(--paper);border:1px solid var(--border);padding:1rem 1.2rem;border-radius:4px;box-shadow:0 8px 32px rgba(0,0,0,0.18);z-index:10;min-width:130px;}
 .badge-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--accent);line-height:1;}
 .badge-label{font-size:0.72rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;font-family:'DM Mono',monospace;}
 
@@ -234,7 +234,7 @@ footer{background:#080807;padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align
     <a href="https://www.linkedin.com/in/kelvin-kafumu" target="_blank" class="proof-pill">
       <div class="proof-number">25K</div>
       <div class="proof-text">
-        <strong>LinkedIn impressions &mdash; one post</strong>
+        <strong>LinkedIn impressions, one post</strong>
         &ldquo;I grew up speaking Swahili. Nobody told me it would make me valuable in AI.&rdquo;
       </div>
     </a>
@@ -300,7 +300,7 @@ footer{background:#080807;padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align
           <p>Dar es Salaam, Tanzania</p>
         </div>
         <div class="aside-card">
-          <h4>Contact &mdash; reach out directly</h4>
+          <h4>Contact: reach out directly</h4>
           <a href="mailto:kelvinkafumu44@gmail.com">kelvinkafumu44@gmail.com</a>
           <a href="https://wa.me/255625939268" target="_blank">WhatsApp: +255 625 939 268 &nearr;</a>
           <a href="https://www.linkedin.com/in/kelvin-kafumu" target="_blank">linkedin.com/in/kelvin-kafumu &nearr;</a>
@@ -329,9 +329,9 @@ footer{background:#080807;padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align
     <h2 class="section-title">Where I've done<br>the work.</h2>
     <div class="exp-list">
       <div class="exp-item fade-up">
-        <div><div class="exp-date">Jan 2026 &mdash; Present</div><div class="exp-company">Freelance</div></div>
+        <div><div class="exp-date">Jan 2026 to Present</div><div class="exp-company">Freelance</div></div>
         <div>
-          <div class="exp-title">Freelance Copywriter &mdash; English &amp; Swahili</div>
+          <div class="exp-title">Freelance Copywriter: English &amp; Swahili</div>
           <ul class="exp-bullets">
             <li>Delivered conversion-focused English and Swahili copy for remote clients across tech and e-commerce, with a 48-hour average turnaround on projects up to 2,000 words.</li>
             <li>Developed Swahili brand copy that preserves cultural register and tonal nuance for brands entering East African markets.</li>
@@ -340,7 +340,7 @@ footer{background:#080807;padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align
         </div>
       </div>
       <div class="exp-item fade-up">
-        <div><div class="exp-date">Feb 2024 &mdash; Dec 2025</div><div class="exp-company">Outlier / Scale AI</div></div>
+        <div><div class="exp-date">Feb 2024 to Dec 2025</div><div class="exp-company">Outlier / Scale AI</div></div>
         <div>
           <div class="exp-title">AI Content Trainer &amp; Language Specialist</div>
           <ul class="exp-bullets">
@@ -406,7 +406,7 @@ footer{background:#080807;padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align
     <div class="samples-grid">
       <div class="sample-card fade-up">
         <div class="sample-tags"><span class="sample-tag">B2B SaaS</span><span class="sample-tag">East Africa</span><span class="sample-tag">Landing Page</span><span class="sample-tag">English</span></div>
-        <div class="sample-title">Landing Page &mdash; Hero Section &middot; East African Analytics Platform</div>
+        <div class="sample-title">Landing Page: Hero Section &middot; East African Analytics Platform</div>
         <div class="sample-body">
           <p><strong>When Every Market in Africa Runs on a Different Clock, Your Data Should Know the Difference</strong></p><br>
           <p>Tabiri connects your business to real-time consumer behaviour data from Kenya, Tanzania, Uganda, and Rwanda. Not trends borrowed from Western markets. Not projections based on last year's guesses.</p><br>
@@ -416,7 +416,7 @@ footer{background:#080807;padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align
       </div>
       <div class="sample-card fade-up" style="transition-delay:0.1s">
         <div class="sample-tags"><span class="sample-tag">Swahili</span><span class="sample-tag">Fintech</span><span class="sample-tag">Ad Copy</span><span class="sample-tag">Bilingual</span></div>
-        <div class="sample-title">Ad Copy &mdash; Facebook &amp; Instagram &middot; Mobile Lending &middot; Tanzania &amp; Kenya</div>
+        <div class="sample-title">Ad Copy: Facebook &amp; Instagram &middot; Mobile Lending &middot; Tanzania &amp; Kenya</div>
         <div class="sample-body">
           <p><strong>Mkopo wa haraka, bila kelele, wenye masharti nafuu</strong></p>
           <p style="font-size:0.82rem;font-style:italic;margin-bottom:0.6rem;">Fast loan, no fuss, fair terms</p>
@@ -468,7 +468,7 @@ footer{background:#080807;padding:2rem clamp(1.5rem,5vw,4rem);display:flex;align
       <div>
         <div class="available-badge">Open for work</div>
         <h2 class="section-title">Let's build<br>something.</h2>
-        <p class="contact-sub">Whether you need a Swahili AI trainer, a copywriter who understands African markets, or someone who can make your LLM speak the language &mdash; I am available. Fastest response via WhatsApp or LinkedIn.</p>
+        <p class="contact-sub">Whether you need a Swahili AI trainer, a copywriter who understands African markets, or someone who can make your LLM speak the language, I am available. Fastest response via WhatsApp or LinkedIn.</p>
         <p class="contact-sub">AI model training contracts &middot; Swahili NLP consulting &middot; Copywriting projects &middot; Content strategy for African and emerging markets.</p>
       </div>
       <div>
